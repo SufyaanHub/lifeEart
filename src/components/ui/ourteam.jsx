@@ -30,14 +30,6 @@ const teamMembers = [
   },
 ];
 
-/*************  ✨ Windsurf Command ⭐  *************/
-/**
- * OurTeam is a component that displays a horizontal scroll of team members.
- * Each team member is represented by a TeamCard component.
- * The component also includes some background decorative elements.
- * @returns {React.Component} A React component that displays a horizontal scroll of team members.
- */
-/*******  c6e08ad3-fe81-45e6-a596-41cf6f2ba7a0  *******/
 const OurTeam = () => {
   return (
     <>

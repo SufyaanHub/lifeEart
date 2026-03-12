@@ -221,7 +221,7 @@ const Hero = memo(() => {
           {/* Optimized Subtitle */}
           <div className="mb-8">
             <h1 className={`text-[clamp(1.8rem,4.2vw,4rem)] font-black leading-[1.1] tracking-[-0.02em] text-transparent bg-clip-text bg-linear-to-br from-[#0a2e5c] via-[#1a4a8a] to-[#2563eb] mb-1 ${on ? 'anim-typing' : 'opacity-0'}`}>
-              Origin of Life
+                WATERWISE
             </h1>
             <h2 className={`text-[clamp(1.4rem,3vw,2.4rem)] font-bold leading-[1.2] tracking-tight text-[#0a2e5c] mt-2 ${on ? 'anim-typing-line2' : 'opacity-0'}`}>
               The Energy Paradox of Early Earth

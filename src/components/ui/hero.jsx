@@ -391,6 +391,9 @@ export default function Hero() {
             <span className="text-[1rem] font-bold text-[#1e2d5a] tracking-tight">Courteney Monchinski</span>
           </div>
         </div>
+        <div>
+          
+        </div>
 
       </div>
 

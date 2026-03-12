@@ -1,0 +1,75 @@
+/* Prebiotic Battery Component Styles */
+
+@keyframes pb-fadeUp { 
+  from { opacity: 0; transform: translateY(30px) } 
+  to { opacity: 1; transform: translateY(0) } 
+}
+
+@keyframes pb-pulse { 
+  0%, 100% { opacity: .6 } 
+  50% { opacity: 1 } 
+}
+
+.pb-visible { 
+  animation: pb-fadeUp .8s cubic-bezier(.22,1,.36,1) forwards; 
+}
+
+.pb-glass { 
+  background: rgba(0,0,0,.7); 
+  backdrop-filter: blur(16px); 
+  border: 1px solid rgba(255,255,255,.15); 
+  transition: border-color 0.2s ease;
+}
+
+.pb-glass:hover { 
+  border-color: rgba(255,255,255,.3); 
+}
+
+/* Optimized slider styling */
+input[type="range"].pb-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(to right, #333 0%, #666 100%);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].pb-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,.5);
+  transition: transform 0.1s ease;
+}
+
+input[type="range"].pb-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type="range"].pb-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,.5);
+  border: none; /* Firefox fix */
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .pb-visible {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

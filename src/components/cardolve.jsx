@@ -30,19 +30,26 @@ export function CardDemo() {
 }
 
 export function TeamCard({ name, photo, hoverPhoto, role = "Team Member", email, className }) {
+  const [isActive, setIsActive] = React.useState(false);
+
   return (
     <div className={cn("w-80 flex-shrink-0", className)}>
       <div
         className={cn(
           "group w-full cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl mx-auto flex flex-col justify-end p-4 border border-transparent dark:border-neutral-800",
-          "transition-all duration-500 hover:shadow-2xl"
+          "transition-all duration-500",
+          isActive ? "shadow-2xl" : "hover:shadow-2xl"
         )}
+        onTouchEnd={(e) => { e.preventDefault(); setIsActive(prev => !prev); }}
       >
         {/* Default Background Image */}
         <img 
           src={photo} 
           alt={name}
-          className="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500 group-hover:opacity-0"
+          className={cn(
+            "absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500",
+            isActive ? "opacity-0" : "group-hover:opacity-0"
+          )}
         />
         
         {/* Hover Background Image */}
@@ -50,30 +57,42 @@ export function TeamCard({ name, photo, hoverPhoto, role = "Team Member", email,
           <img 
             src={hoverPhoto} 
             alt={`${name} hover`}
-            className="absolute inset-0 w-full h-full object-cover z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            className={cn(
+              "absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500",
+              isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+            )}
           />
         )}
-        
-        {/* Overlay on hover */}
-        <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 z-10" />
+
+        {/* Always-visible bottom gradient for text readability */}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 to-transparent z-[5]" />
+
+        {/* Overlay on hover / tap */}
+        <div className={cn(
+          "absolute inset-0 bg-black transition-opacity duration-500 z-10",
+          isActive ? "opacity-50" : "opacity-0 group-hover:opacity-50"
+        )} />
         
         {/* Content */}
         <div className="text relative z-20">
-          <h1 className="font-bold text-xl md:text-2xl text-white relative group-hover:text-gray-100 transition-colors duration-300">
+          <h1 className="font-bold text-xl md:text-2xl text-white relative transition-colors duration-300">
             {name}
           </h1>
-          <p className="font-normal text-sm text-gray-200 relative mt-2 group-hover:text-gray-100 transition-colors duration-300">
+          <p className="font-normal text-sm text-gray-200 relative mt-2 transition-colors duration-300">
             {role}
           </p>
           {email && (
-            <p className="font-normal text-xs text-gray-300 relative mt-1 group-hover:text-gray-200 transition-colors duration-300">
+            <p className="font-normal text-xs text-gray-300 relative mt-1 transition-colors duration-300">
               {email}
             </p>
           )}
         </div>
         
-        {/* Decorative border on hover */}
-        <div className="absolute inset-0 border-2 border-white opacity-0 group-hover:opacity-30 transition-opacity duration-500 rounded-md" />
+        {/* Decorative border on hover / tap */}
+        <div className={cn(
+          "absolute inset-0 border-2 border-white transition-opacity duration-500 rounded-md",
+          isActive ? "opacity-30" : "opacity-0 group-hover:opacity-30"
+        )} />
       </div>
     </div>
   );

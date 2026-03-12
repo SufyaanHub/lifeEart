@@ -64,9 +64,9 @@ const OurTeam = () => {
         <div className="mt-6 w-24 h-1 mx-auto bg-black rounded-full" />
       </div>
 
-      {/* Team Members Horizontal Scroll */}
+      {/* Team Members */}
       <div className="relative w-full max-w-7xl">
-        <div className="flex gap-8 justify-center overflow-x-auto scrollbar-hide pb-4 px-4">
+        <div className="flex flex-row gap-8 items-center overflow-x-auto scrollbar-hide pb-4 px-4 justify-start md:justify-center">
           {teamMembers.map((member, index) => (
             <TeamCard 
               key={index}
